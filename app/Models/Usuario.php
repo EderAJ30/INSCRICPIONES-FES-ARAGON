@@ -1,48 +1,46 @@
 <?php
 
-/**
- * Created by Reliese Model.
- */
-
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-/**
- * Class Usuario
- * 
- * @property int $id_usuario
- * @property string $correo_electronico
- * @property string $contrasena_hash
- * @property int $id_rol
- * @property int|null $asociable_id
- * @property string|null $asociable_type
- * 
- * @property Rol $rol
- *
- * @package App\Models
- */
-class Usuario extends Model
+class Usuario extends Authenticatable
 {
-	protected $table = 'Usuario';
-	protected $primaryKey = 'id_usuario';
-	public $timestamps = false;
+  use Notifiable;
 
-	protected $casts = [
-		'id_rol' => 'int',
-		'asociable_id' => 'int'
-	];
+  protected $table = 'Usuario';
+  protected $primaryKey = 'id_usuario';
 
-	protected $fillable = [
-		'correo_electronico',
-		'contrasena_hash',
-		'id_rol',
-		'asociable_id',
-		'asociable_type'
-	];
+  // Si tu tabla no tiene las columnas created_at y updated_at
+  public $timestamps = false;
 
-	public function rol()
-	{
-		return $this->belongsTo(Rol::class, 'id_rol');
-	}
+  protected $fillable = [
+    'correo_electronico',
+    'contrasena_hash',
+    'id_rol',
+    'asociable_id',
+    'asociable_type',
+  ];
+
+  protected $hidden = [
+    'contrasena_hash',
+  ];
+
+  /**
+   * Indicarle a Laravel que tu columna de contraseña se llama 'contrasena_hash'
+   */
+  public function getAuthPasswordName()
+  {
+    return 'contrasena_hash';
+  }
+  public function perfil()
+  {
+    return $this->morphTo(__FUNCTION__, 'asociable_type', 'asociable_id');
+  }
+
+  public function esAlumno(): bool
+  {
+    return $this->asociable_type === 'App\Models\Alumno';
+  }
 }

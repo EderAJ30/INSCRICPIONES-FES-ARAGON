@@ -98,8 +98,7 @@ CREATE TABLE `Inscripcion` (
     `calificacion_final` DECIMAL(4, 2) NULL,
     `estatus_inscripcion` VARCHAR(20) NOT NULL DEFAULT 'Regular' COMMENT 'Regular, Baja, Pendiente',
     CONSTRAINT `fk_inscripcion_alumno` FOREIGN KEY (`id_alumno`) REFERENCES `Alumno` (`id_alumno`) ON DELETE RESTRICT ON UPDATE CASCADE,
-    CONSTRAINT `fk_inscripcion_grupo` FOREIGN KEY (`id_grupo`) REFERENCES `Grupo` (`id_grupo`) ON DELETE RESTRICT ON UPDATE CASCADE,
-    CONSTRAINT `uq_alumno_grupo` UNIQUE (`id_alumno`, `id_grupo`)
+    CONSTRAINT `fk_inscripcion_grupo` FOREIGN KEY (`id_grupo`) REFERENCES `Grupo` (`id_grupo`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
 CREATE TABLE `ComprobanteInscripcion` (

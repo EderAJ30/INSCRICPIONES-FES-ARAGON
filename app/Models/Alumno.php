@@ -34,45 +34,45 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Alumno extends Model
 {
-	protected $table = 'Alumno';
-	protected $primaryKey = 'id_alumno';
-	public $timestamps = false;
+  protected $table = 'Alumno';
+  protected $primaryKey = 'id_alumno';
+  public $timestamps = false;
 
-	protected $casts = [
-		'semestre_inscrito' => 'int',
-		'anio_ingreso' => 'int',
-		'promedio' => 'float',
-		'estatus_academico' => 'int',
-		'id_carrera' => 'int'
-	];
+  protected $casts = [
+    'semestre_inscrito' => 'int',
+    'anio_ingreso' => 'int',
+    'promedio' => 'float',
+    'estatus_academico' => 'int',
+    'id_carrera' => 'int'
+  ];
 
-	protected $fillable = [
-		'numero_cuenta',
-		'nombre',
-		'apellido_paterno',
-		'apellido_materno',
-		'correo_institucional',
-		'semestre_inscrito',
-		'turno',
-		'anio_ingreso',
-		'promedio',
-		'estatus_academico',
-		'sexo',
-		'id_carrera'
-	];
+  protected $fillable = [
+    'numero_cuenta',
+    'nombre',
+    'apellido_paterno',
+    'apellido_materno',
+    'correo_institucional',
+    'semestre_inscrito',
+    'turno',
+    'anio_ingreso',
+    'promedio',
+    'estatus_academico',
+    'sexo',
+    'id_carrera'
+  ];
 
-	public function carrera()
-	{
-		return $this->belongsTo(Carrera::class, 'id_carrera');
-	}
+  public function carrera()
+  {
+    return $this->belongsTo(Carrera::class, 'id_carrera');
+  }
 
-	public function comprobante_inscripcions()
-	{
-		return $this->hasMany(ComprobanteInscripcion::class, 'id_alumno');
-	}
+  public function comprobante_inscripciones()
+  {
+    return $this->hasMany(ComprobanteInscripcion::class, 'id_alumno');
+  }
 
-	public function inscripcions()
-	{
-		return $this->hasMany(Inscripcion::class, 'id_alumno');
-	}
+  public function inscripciones()
+  {
+    return $this->hasMany(Inscripcion::class, 'id_alumno');
+  }
 }

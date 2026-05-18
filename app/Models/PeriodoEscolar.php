@@ -26,30 +26,30 @@ use Illuminate\Database\Eloquent\Model;
  */
 class PeriodoEscolar extends Model
 {
-	protected $table = 'PeriodoEscolar';
-	protected $primaryKey = 'id_periodo';
-	public $timestamps = false;
+  protected $table = 'PeriodoEscolar';
+  protected $primaryKey = 'id_periodo';
+  public $timestamps = false;
 
-	protected $casts = [
-		'fecha_inicio' => 'datetime',
-		'fecha_fin' => 'datetime',
-		'estatus_activo' => 'bool'
-	];
+  protected $casts = [
+    'fecha_inicio' => 'datetime',
+    'fecha_fin' => 'datetime',
+    'estatus_activo' => 'bool'
+  ];
 
-	protected $fillable = [
-		'nombre_periodo',
-		'fecha_inicio',
-		'fecha_fin',
-		'estatus_activo'
-	];
+  protected $fillable = [
+    'nombre_periodo',
+    'fecha_inicio',
+    'fecha_fin',
+    'estatus_activo'
+  ];
 
-	public function comprobante_inscripcions()
-	{
-		return $this->hasMany(ComprobanteInscripcion::class, 'id_periodo');
-	}
+  public function comprobante_inscripciones()
+  {
+    return $this->hasMany(ComprobanteInscripcion::class, 'id_periodo');
+  }
 
-	public function grupos()
-	{
-		return $this->hasMany(Grupo::class, 'id_periodo');
-	}
+  public function grupos()
+  {
+    return $this->hasMany(Grupo::class, 'id_periodo');
+  }
 }
