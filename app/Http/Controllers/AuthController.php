@@ -27,7 +27,12 @@ class AuthController extends Controller
       'password' => $credentials['password']
     ])) {
       $request->session()->regenerate();
-      return redirect()->intended(route('dashboard'));
+
+      if (Auth::user()->id_rol == 1) {
+        return redirect()->route('admin.dashboard');
+      }
+
+      return redirect()->route('dashboard');
     }
 
     return back()->withErrors([

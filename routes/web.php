@@ -5,6 +5,11 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\InscripcionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AsignaturaController;
+use App\Http\Controllers\Admin\ProfesorController;
+use App\Http\Controllers\Admin\AulaController;
+use App\Http\Controllers\Admin\GrupoAdminController;
 
 Route::middleware('guest')->group(function () {
   Route::get('login', [AuthController::class, 'showLogin'])->name('login');
@@ -28,6 +33,18 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('inscripciones/resumen/{id}', [InscripcionController::class, 'resumen'])->name('inscripciones.resumen');
+
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+  Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
+
+  // Catálogos base
+  Route::resource('asignaturas', AsignaturaController::class);
+  Route::resource('profesores', ProfesorController::class);
+  Route::resource('aulas', AulaController::class);
+
+  // Planeación compleja
+  Route::resource('grupos', GrupoAdminController::class);
+});
 
 
 Route::get('/', function () {

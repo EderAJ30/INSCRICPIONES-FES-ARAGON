@@ -679,10 +679,15 @@ class ComposerStaticInitac8735fa9a02e60a9ccbf58c782ad92f
     );
 
     public static $classMap = array (
+        'App\\Http\\Controllers\\Admin\\AdminDashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminDashboardController.php',
+        'App\\Http\\Controllers\\Admin\\AulaController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AulaController.php',
+        'App\\Http\\Controllers\\Admin\\ProfesorController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ProfesorController.php',
         'App\\Http\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
         'App\\Http\\Controllers\\InscripcionController' => __DIR__ . '/../..' . '/app/Http/Controllers/InscripcionController.php',
+        'App\\Http\\Controllers\\PerfilController' => __DIR__ . '/../..' . '/app/Http/Controllers/PerfilController.php',
+        'App\\Middleware\\AdminMiddleware' => __DIR__ . '/../..' . '/app/Middleware/AdminMiddleware.php',
         'App\\Models\\Alumno' => __DIR__ . '/../..' . '/app/Models/Alumno.php',
         'App\\Models\\Asignatura' => __DIR__ . '/../..' . '/app/Models/Asignatura.php',
         'App\\Models\\Aula' => __DIR__ . '/../..' . '/app/Models/Aula.php',

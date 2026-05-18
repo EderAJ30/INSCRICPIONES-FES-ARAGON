@@ -54,7 +54,7 @@
         @auth
         <li>
           <a href="{{ route('perfil.index') }}" class="px-4 py-1.5 rounded-lg border border-[#C5911F]/40 bg-[#C5911F]/10 text-[#C5911F] hover:bg-[#C5911F] hover:text-white transition-all duration-300">
-            {{ $alumno->nombre }}
+            {{ Auth::user()->perfil?->nombre ?? 'Administrador' }}
           </a>
         </li>
         @endauth

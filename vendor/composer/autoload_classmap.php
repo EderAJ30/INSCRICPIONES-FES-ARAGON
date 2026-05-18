@@ -6,10 +6,15 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Http\\Controllers\\Admin\\AdminDashboardController' => $baseDir . '/app/Http/Controllers/Admin/AdminDashboardController.php',
+    'App\\Http\\Controllers\\Admin\\AulaController' => $baseDir . '/app/Http/Controllers/Admin/AulaController.php',
+    'App\\Http\\Controllers\\Admin\\ProfesorController' => $baseDir . '/app/Http/Controllers/Admin/ProfesorController.php',
     'App\\Http\\Controllers\\AuthController' => $baseDir . '/app/Http/Controllers/AuthController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\DashboardController' => $baseDir . '/app/Http/Controllers/DashboardController.php',
     'App\\Http\\Controllers\\InscripcionController' => $baseDir . '/app/Http/Controllers/InscripcionController.php',
+    'App\\Http\\Controllers\\PerfilController' => $baseDir . '/app/Http/Controllers/PerfilController.php',
+    'App\\Middleware\\AdminMiddleware' => $baseDir . '/app/Middleware/AdminMiddleware.php',
     'App\\Models\\Alumno' => $baseDir . '/app/Models/Alumno.php',
     'App\\Models\\Asignatura' => $baseDir . '/app/Models/Asignatura.php',
     'App\\Models\\Aula' => $baseDir . '/app/Models/Aula.php',

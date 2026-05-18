@@ -13,6 +13,11 @@ class DashboardController extends Controller
   public function index(Request $request)
   {
     $usuario = Auth::user();
+
+    if ($usuario->id_rol == 1) {
+      return redirect()->route('admin.dashboard');
+    }
+
     $alumno = $usuario->esAlumno() ? $usuario->perfil : null;
 
     $yaInscrito = false;
